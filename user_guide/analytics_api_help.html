@@ -1,0 +1,945 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Google Analytics API Class : CodeIgniter User Guide</title>
+
+<style type="text/css">
+body {
+ margin: 0;
+ padding: 0;
+ font-family: Lucida Grande, Verdana, Geneva, Sans-serif;
+ font-size: 14px;
+ color: #333;
+ background-color: #fff;
+}
+
+a {
+ color: #0134c5;
+ background-color: transparent;
+ text-decoration: none;
+ font-weight: normal;
+}
+a:visited {
+ color: #0134c5;
+ background-color: transparent;
+ text-decoration: none;
+}
+a:hover {
+ color: #000;
+ text-decoration: none;
+ background-color: transparent;
+}
+
+#masthead {
+ margin: 0 40px 0 35px;
+ padding: 0 0 0 6px;
+ border-bottom: 1px solid #999;
+}
+
+#masthead h1 {
+background-color: transparent;
+color: #e13300;
+font-size: 18px;
+font-weight: normal;
+margin: 0;
+padding: 0 0 6px 0;
+}
+
+#searchbox {
+ background-color: transparent;
+ padding: 6px 40px 0 0;
+ text-align: right;
+ font-size: 10px;
+ color: #666;
+}
+
+#img_welcome {
+ border-bottom: 1px solid #D0D0D0;
+ margin: 0 40px 0 40px;
+ padding: 0;
+ text-align: center;
+}
+
+#content {
+ margin: 20px 40px 0 40px;
+ padding: 0;
+}
+
+#content p {
+ margin: 12px 20px 12px 0;
+}
+
+#content h1 {
+color: #e13300;
+border-bottom: 1px solid #666;
+background-color: transparent;
+font-weight: normal;
+font-size: 24px;
+margin: 0 0 20px 0;
+padding: 3px 0 7px 3px;
+}
+
+#content h2 {
+ background-color: transparent;
+ border-bottom: 1px solid #999;
+ color: #000;
+ font-size: 18px;
+ font-weight: bold;
+ margin: 28px 0 16px 0;
+ padding: 5px 0 6px 0;
+}
+
+#content h3 {
+ background-color: transparent;
+ color: #333;
+ font-size: 16px;
+ font-weight: bold;
+ margin: 16px 0 15px 0;
+ padding: 0 0 0 0;
+}
+
+#content h4 {
+ background-color: transparent;
+ color: #444;
+ font-size: 14px;
+ font-weight: bold;
+ margin: 22px 0 0 0;
+ padding: 0 0 0 0;
+}
+
+#content img {
+ margin: auto;
+ padding: 0;
+}
+
+#content code {
+ font-family: Monaco, Verdana, Sans-serif;
+ font-size: 12px;
+ background-color: #f9f9f9;
+ border: 1px solid #D0D0D0;
+ color: #002166;
+ display: block;
+ margin: 14px 0 14px 0;
+ padding: 12px 10px 12px 10px;
+}
+
+#content pre {
+ font-family: Monaco, Verdana, Sans-serif;
+ font-size: 12px;
+ background-color: #f9f9f9;
+ border: 1px solid #D0D0D0;
+ color: #002166;
+ display: block;
+ margin: 14px 0 14px 0;
+ padding: 12px 10px 12px 10px;
+}
+
+#content .path {
+ background-color: #EBF3EC;
+ border: 1px solid #99BC99;
+ color: #005702;
+ text-align: center;
+ margin: 0 0 14px 0;
+ padding: 5px 10px 5px 8px;
+}
+
+#content dfn {
+ font-family: Lucida Grande, Verdana, Geneva, Sans-serif;
+ color: #00620C;
+ font-weight: bold;
+ font-style: normal;
+}
+#content var {
+ font-family: Lucida Grande, Verdana, Geneva, Sans-serif;
+ color: #8F5B00;
+ font-weight: bold;
+ font-style: normal;
+}
+#content samp {
+ font-family: Lucida Grande, Verdana, Geneva, Sans-serif;
+ color: #480091;
+ font-weight: bold;
+ font-style: normal;
+}
+#content kbd {
+ font-family: Lucida Grande, Verdana, Geneva, Sans-serif;
+ color: #A70000;
+ font-weight: bold;
+ font-style: normal;
+}
+
+#content ul {
+ list-style-image: url(images/arrow.gif);
+ margin: 10px 0 12px 0;
+}
+
+#content li {
+ margin-bottom: 9px;
+}
+
+#content li p {
+ margin-left: 0;
+ margin-right: 0;
+}
+
+#content .tableborder {
+ border: 1px solid #999;
+}
+#content th {
+ font-weight: bold;
+ text-align: left;
+ font-size: 12px;
+ background-color: #666;
+ color: #fff;
+ padding: 4px;
+}
+
+#content .td {
+ font-weight: normal;
+ font-size: 12px;
+ padding: 6px;
+ background-color: #f3f3f3;
+}
+
+#content .tdpackage {
+ font-weight: normal;
+ font-size: 12px;
+}
+
+#content .important {
+ background: #FBE6F2;
+ border: 1px solid #D893A1;
+ color: #333;
+ margin: 10px 0 5px 0;
+ padding: 10px;
+}
+
+#content .important p {
+ margin: 6px 0 8px 0;
+ padding: 0;
+}
+
+#content .important .leftpad {
+ margin: 6px 0 8px 0;
+ padding-left: 20px;
+}
+
+#content .critical {
+ background: #FBE6F2;
+ border: 1px solid #E68F8F;
+ color: #333;
+ margin: 10px 0 5px 0;
+ padding: 10px;
+}
+
+#content .critical p {
+ margin: 5px 0 6px 0;
+ padding: 0;
+}
+
+.center {
+ text-align: center;
+}
+
+img {
+ padding:0;
+ border: 0;
+ margin: 0;
+}
+
+.nopad {
+ padding:0;
+ border: 0;
+ margin: 0;
+}
+</style>
+
+</head>
+<body>
+
+
+<!-- START CONTENT -->
+<div id="content">
+
+
+<h1>Google Analytics API Class</h1>
+
+<p>Cette classe vous permet de vous connecter à votre compte Google Analytics et de récupérer les données d'un profil particulier selon de multiples critères.</p>
+
+<p class="important"><strong>Note: </strong> Vous devez posséder un compte Google Analytics et avoir au moins un site disponible afin de pouvoir utiliser cette librairie.<br /> Pour plus d'informations, <a href="http://www.google.com/intl/fr/analytics/index.html">http://www.google.com/intl/fr/analytics/index.html</a></p>
+
+<h2>Configuration requise</h2>
+<ul>
+<li><dfn>PHP 5</dfn></li>
+<li><dfn>Extension PHP cURL</dfn></li>
+</ul>
+
+
+<h2>Initialiser la Classe</h2>
+
+<p>Comme la plupart des classes dans CodeIgniter, cette classe est initialisée depuis votre contrôleur en utilisant la fonction <dfn>$this->load-&gt;library</dfn>:</p>
+<code>$this->load->library('ga_api');</code>
+
+<p>L'objet pour accéder aux fonctions de la classe est <dfn>$this->ga_api</dfn>.<br />
+Vous devrez néanmoins ajouter certains paramètres de configuration, sans quoi la classe sera inutilisable (voir ci-dessous)</p>
+
+
+<h2>Configuration de la librairie</h2>
+
+<p>
+Avant de pouvoir effectuer une requête via l'API de Google Analytics, vous devez renseigner vos informations de compte. La méthode de chargement de la configuration est la même que pour les autres librairies de CodeIgniter. Vous pouvez donc soit passer les préférences directement depuis le contrôleur, soit depuis un fichier de configuration. Exemple d'informations pour vous connecter:
+</p>
+<code>
+$this->load->library('ga_api');
+<br />
+<br />
+$config['id'] = 'ga:00000000';<br />
+$config['email']	= 'google@email.com';<br />
+$config['password'] = 'google_password'<br />
+<br />
+$this->ga_api->initialize($config);
+<br />
+<br />
+$this->ga_api->login();</code>
+
+<p>Le code ci-dessus permet de charger la class avec la configuration du compte. <dfn>login()</dfn> effectue une simple connexion à l'API avec votre compte.</p>
+
+<h2>Préférences</h2>
+
+<p>Le tableau ci-dessous revient sur les préférences disponible pour la configuration de vos requêtes</p>
+
+<p>Il est possible de stocker ces préférences dans un fichier de configuration. Vous devrez alors créer un fichier nommé <var>ga_api.php</var> dans le répertoire <var>config/</var> de votre application, puis y placer votre Array <var>$config</var> Dans ce cas, vous n'aurez pas besoin de d'utiliser la fonction <dfn>$this-&gt;ga_api-&gt;initialize</dfn>, le ficher sera lu automatiquement lors du chargement de la librairie.</p>
+
+<table cellpadding="0" cellspacing="1" border="0" style="width:100%" class="tableborder">
+<tr>
+<th>Préférence</th>
+<th>Valeur par défaut</th>
+<th>Options</th>
+<th>Description</th>
+<th>Obligatoire</th>
+</tr>
+
+<tr>
+<td class="td"><strong>profile_id</strong></td>
+<td class="td"></td>
+<td class="td">ga:(string)</td>
+<td class="td">(string) représente votre identifiant de profil Google Analytics. Cette préférence est obligatoire afin de pouvoir indiquer à l'API depuis quel profil. Vous le trouverez dans les "Paramètres de profil" de votre site</td>
+<td class="td">Oui</td>
+</tr>
+
+<tr>
+<td class="td"><strong>email</strong></td>
+<td class="td"></td>
+<td class="td">(Email valide)</td>
+<td class="td">L'email de votre compte Google</td>
+<td class="td">Oui</td>
+</tr>
+
+<tr>
+<td class="td"><strong>password</strong></td>
+<td class="td"></td>
+<td class="td"></td>
+<td class="td">Votre mot de passe de compte Google</td>
+<td class="td">Oui</td>
+</tr>
+
+<tr>
+<td class="td"><strong>source_name</strong></td>
+<td class="td"></td>
+<td class="td">(nom de votre site)</td>
+<td class="td">Affiche le nom de votre site dans le header de la requête lors de la connexion à votre compte Google</td>
+<td class="td">Non</td>
+</tr>
+
+<tr>
+<td class="td"><strong>login_home</strong></td>
+<td class="td">https://www.google.com/
+accounts/ClientLogin</td>
+<td class="td"></td>
+<td class="td">l'URL de connexion au compte Google</td>
+<td class="td">Oui</td>
+</tr>
+
+<tr>
+<td class="td"><strong>accounts_home</strong></td>
+<td class="td">https://www.google.com/
+analytics/feeds/accounts
+/default</td>
+<td class="td"></td>
+<td class="td">l'URL de récupération des données de profils associés à votre compte</td>
+<td class="td">Oui</td>
+</tr>
+
+<tr>
+<td class="td"><strong>data_home</strong></td>
+<td class="td">https://www.google.com
+/analytics/feeds/data?</td>
+<td class="td"></td>
+<td class="td">l'URL de récupération des données de type 'data'</td>
+<td class="td">Oui</td>
+</tr>
+
+<tr>
+<td class="td"><strong>debug</strong></td>
+<td class="td">FALSE</td>
+<td class="td">TRUE/FALSE (boolean)</td>
+<td class="td">Cette option effectue un 'echo' de l'url construite par la librairie pour la récupération des 'data'. Ceci permet de contrôler les options envoyées à l'API</td>
+<td class="td">Non</td>
+</tr>
+
+<tr>
+<td class="td"><strong>summary</strong></td>
+<td class="td">TRUE</td>
+<td class="td">TRUE/FALSE (boolean)</td>
+<td class="td">Ajoute des données globales aux requêtes de type 'data' dans l'Array ou l'Objet. Ces données sont accessibles depuis l'index $data['summary']. Voir "Afficher le résumé des requêtes" pour plus de détails</td>
+<td class="td">Non</td>
+</tr>
+
+
+<tr>
+<td class="td"><strong>prettyprint</strong></td>
+<td class="td">FALSE</td>
+<td class="td">TRUE/FALSE (boolean)</td>
+<td class="td">Cette option permet de choisir si les données XML doivent être lisibles (mise en page) ou non</td>
+<td class="td">Non</td>
+</tr>
+
+<tr>
+<td class="td"><strong>max_results</strong></td>
+<td class="td">100</td>
+<td class="td">INT</td>
+<td class="td">Spécifier le nombre de résultat par requête</td>
+<td class="td">Non</td>
+</tr>
+
+<tr>
+<td class="td"><strong>start_index</strong></td>
+<td class="td">1</td>
+<td class="td">INT</td>
+<td class="td">Spécifier ou l'index de départ des résultats</td>
+<td class="td">Non</td>
+</tr>
+
+<tr>
+<td class="td"><strong>start</strong></td>
+<td class="td">1 month ago</td>
+<td class="td">timestamp ou strtotime</td>
+<td class="td">Spécifier la date de départ</td>
+<td class="td">Non</td>
+</tr>
+
+<tr>
+<td class="td"><strong>end</strong></td>
+<td class="td">yesterday</td>
+<td class="td">timestamp ou strtotime</td>
+<td class="td">Spécifier la date de fin</td>
+<td class="td">Non</td>
+</tr>
+
+<tr>
+<td class="td"><strong>cache_data</strong></td>
+<td class="td">FALSE</td>
+<td class="td">TRUE/FALSE (boolean)</td>
+<td class="td">Défini si l'on souhaite faire une copie locale du fichier 'data' demandé. La copie est le fichier xml brut, dont le nom (encodé md5) est basé sur les paramètres de l'url de la requête (visible via l'option "debug"). Si une requête identique au fichier du cache est effectuée, la librairie prendra les informations contenu dans le fichier local à la place d'effectuer une nouvelle requête à l'API. Ceci permet de gagner beaucoup de temps sur le chargement de vos pages</td>
+<td class="td">Non</td>
+</tr>
+
+<tr>
+<td class="td"><strong>cache_folder</strong></td>
+<td class="td"></td>
+<td class="td">(chemin vers le dossier de cache)</td>
+<td class="td">Spécifier le chemin 'système' dans lequel vos fichiers cache seront stockés. Le dossier doit posséder les droits en écriture</td>
+<td class="td">Si "cache_data" est TRUE</td>
+</tr>
+
+<tr>
+<td class="td"><strong>cache_ext</strong></td>
+<td class="td">xml</td>
+<td class="td"></td>
+<td class="td">Spécifier l'extension sous laquelle les fichiers de cache seront sauvegardés et lus</td>
+<td class="td">Non</td>
+</tr>
+
+<tr>
+<td class="td"><strong>clear_cache</strong></td>
+<td class="td">None</td>
+<td class="td">[date ou size], [imestamp/strtotime ou taille en octets]</td>
+<td class="td">Cette préférence doit être spécifier sous forme d'Array (non associatif). Permet de nettoyer les fichiers de cache soit antérieurs à une date spécifique, soit lorsque la taille du cache est supérieure à la taille indiqué. Voir "Nettoyer le cache"</td>
+<td class="td">Non</td>
+</tr>
+</table>
+<p></p>
+
+<h2>Définir l'expiration du cache</h2>
+
+<p>Il est possible d'indiquer à la classe comment effacer les fichiers stockés dans le <dfn>cache_folder</dfn>.
+Si <dfn>cache_data</dfn> est défini sur TRUE, la classe vérifiera le cache à chaque initialisation:
+</p>
+
+<code>$config['clear_cache'] = array('key', 'value');</code>
+
+<h3>Par date</h3>
+
+<p>Vous pouvez spécifier une date à partir de laquelle tous les fichiers antérieurs à cette date seront supprimés:</p>
+
+<code>$config['clear_cache'] = array('date', '1 day ago');</code>
+
+<p>La valeur peut être soit un string compatible avec la fonction <var>strtotime</var>, soit un timestamp unix.</p>
+
+
+<h3>Par Taille</h3>
+
+<p>Spécifier un taille maximale du cache aura pour conséquence de supprimer tous les fichiers une fois que leurs tailles additionnées sera supérieure à la valeure indiquée (exprimée en octets):</p>
+
+<code>$config['clear_cache'] = array('size', '20971520');</code>
+
+<p>L'exemple indique que la taille maximale du cache ne doit pas excéder les 20 Mo.</p>
+
+<br />
+<br />
+
+
+
+<h1>Fonctions associées aux paramètres de classe</h1>
+
+<h2>$this->ga_api->initialize()</h2>
+
+<p>Initialisation de la classe via un array associatif de configuration.</p>
+
+<code>$this->ga_api->initialize($config);</code>
+
+<p>Si vous n'utilisez pas de fichier de configuration, il est également possible de passer la configuration faite dans le contrôleur au moment de la lecture de la librairie:</p>
+
+<code>$this->load->library('ga_api', $config);</code>
+
+<h2>$this->ga_api->clear()</h2>
+
+<p>Permet à tout moment de réinitialiser tous ou certains objets de la classe.</p>
+
+<p>1. Réinitialisation complète de <b>tous les paramètres</b> (configuration et ceux générés par les fonctions associées aux données):</p>
+
+<code>$this->ga_api->clear();</code>
+
+<p>2. Réinitialisation de certains <b>objets générés par les fonctions associées aux données</b>. Utile si vous faites plusieurs requêtes dans une même fonction du contrôleur :</p>
+
+<code>$this->ga_api->clear(<var>'limit'</var>);
+<br />
+<br />
+// Réinitialise l'objet limit à sa valeur par défaut, à savoir 100
+</code>
+
+<strong>Paramètres acceptés</strong>:
+<ul>
+ <li>Tous les "<kbd>Fonctions de production de requêtes</kbd>" exceptées les <dfn>$this->ga_api->get*</dfn></li>
+  <li>login</li>
+</ul>
+
+<h2>$this->ga_api->clear_cache()</h2>
+
+<p>Permet à tout moment de nettoyer le cache si celui-ci a été activé. Si aucun paramètre n'est passé, l'ensemble du cache sera supprimé. La fonction accepte un array avec les paramètres que vous pouvez trouver à la section "Définir l'expiration du cache:"</p>
+
+<pre>
+$params = array ('date','1 week ago');
+
+$this->ga_api->clear-cache($params);
+
+// Supprime les fichiers plus vieux d'une semaine
+</pre>
+<br />
+<br />
+
+
+<h1>Fonctions associées aux connexions</h1>
+
+<h2>$this->ga_api->login()</h2>
+
+<p>Au travers de cette fonction, la classe s'identifie au serveur Google via les paramètres de connexion que vous aurez lu via l'initialisation de la classe.</p>
+
+<p class="important"><strong>Note: </strong> Vous n'avez pas besoin d'appeler cette fonction dans vos requêtes mis à part pour la fonction <dfn>$this->ga_api->load_accounts()</dfn></p>
+
+<p>Retourne <dfn>FALSE</dfn> en cas d'échec.</p>
+
+<h2>$this->ga_api->clear_login_data()</h2>
+
+<p>Lors de la première initialisation, la classe stocke les paramètres de connexion en session (via la librairie dédiée de CodeIgniter), ceci afin de profiter d'un gain non négligeable sur le temps d'affichage en évitant de s'authentifier à chaque requête.
+Si vous devez changer de profil, invoquez cette fonction afin supprimer ces informations de la session.</p>
+<p>La fonction <var>$this->ga_api->clear('login')</var> est un équivalent.</p>
+
+
+
+
+<h2>$this->ga_api->get_accounts()</h2>
+
+<p>Cette fonction récupères les comptes Analytics de votre compte Google. Vous devrez être dans un premier temps authentifié avant d'utiliser cette fonction.</p>
+
+<p>Exemple de lecture d'un compte:</p>
+
+<code>
+$accounts = $this->ga_api->login()->get_accounts();
+</code>
+
+<p>En cas d'échec de récupération des comptes, accounts sera égal à FALSE, sinon:</p>
+
+<pre>Array
+(
+	[segments] => stdClass Object
+	    (
+	        [gaid::-1] => All Visits
+	        [gaid::-2] => New Visitors
+	        [gaid::-3] => Returning Visitors
+	    	(...etc)
+	    )
+	[monsite.com] => stdClass Object
+	    (
+	        [title] => monsite.com
+	        [tableId] => ga:00000000
+	        [accountId] => 1111111
+	        [accountName] => Mon site
+	        [profileId] => 00000000
+	        [webPropertyId] => UA-1111111-1
+	    )
+)
+</pre>
+
+<p>Si vous passez le paramètre <dfn>FALSE</dfn> à la fonction, celle-ci retournera un Array.</p>
+<br />
+<br />
+
+<h1>Fonctions de configuration de requêtes</h1>
+
+<h2>$this->ga_api->dimension()</h2>
+
+<p>Spécifier la ou les dimensions <b>(3 au maximum)</b> de la requête. Voir <a href="http://code.google.com/intl/fr/apis/analytics/docs/gdata/gdataReferenceDimensionsMetrics.html#dimensions"> La documentation de référence</a> pour les critères disponibles. Il n'est pas nécessaire de spécifier le préfix 'ga:', la fonction s'occupera de l'ajouter elle-même.</p>
+
+<p>1. Multiples dimensions avec un <b>String</b> comme argument:</p>
+
+<code>
+$this->ga_api->dimension('source, medium');
+<br />
+<br />
+// produit: &dimensions=ga:source,ga:medium
+</code>
+
+<p>2. Multiples dimensions avec un <b>Array</b> comme argument:</p>
+
+<code>
+$dimensions = array('source', 'medium');
+<br />
+<br />
+$this->ga_api->dimension($dimensions);
+<br />
+<br />
+// produit &dimensions=ga:source,ga:medium
+</code>
+
+
+<h2>$this->ga_api->metric()</h2>
+
+<p>Spécifier le ou les metrics de la requête. Voir <a href="http://code.google.com/intl/fr/apis/analytics/docs/gdata/gdataReferenceDimensionsMetrics.html#metrics"> La documentation de référence</a> pour les critères disponibles. Il n'est pas nécessaire de spécifier le préfix 'ga:', la fonction s'occupera de l'ajouter elle-même.</p>
+
+<p>1. Multiples metrics avec un <b>String</b> comme argument:</p>
+
+<code>
+$this->ga_api->metric('entrances, bounces');
+<br />
+<br />
+// produit: &metrics=ga:entrances,ga:medium
+</code>
+
+<p>2. Multiples dimensions avec un <b>Array</b> comme argument:</p>
+
+<code>
+$metrics = aray('entrances', 'bounces');
+<br />
+<br />
+$this->ga_api->metric($dimensions);
+<br />
+<br />
+// produit &metrics=ga:entrances,ga:medium
+</code>
+
+<h2>$this->ga_api->when()</h2>
+
+<p>Correspond aux dates de début et de fin pour créer un interval à partir duquel les données vont être produites. Si cette fonction n'est pas invoquée, les données seront sélectionnées dans un interval d'un mois, à partir du jour précédent la requête:</p>
+
+<code>$this->ga_api->when('start_date', 'end_date);</code>
+
+<p>La fonction accepte 1 ou 2 paramètres. si le second (end_date) n'est pas indiqué, alors celui-ci correspondra au jour précédent la requête.</p>
+
+<p>1. Exemple avec des <b>string compatibles strtotime</b>:</p>
+
+<code>
+$this->ga_api->when('01 May 2009', '05 June 2010');
+<br />
+<br />
+// produit: &start-date=2009-05-01&end-date=2010-06-05
+</code>
+
+<p>2. Exemple avec des <b>timestamp</b>:</p>
+
+<code>
+$this->ga_api->when(1275688800, 1241128800);
+<br />
+<br />
+// produit: &start-date=2009-05-01&end-date=2010-06-05
+</code>
+
+
+<h2>$this->ga_api->filter()</h2>
+
+<p>Permet d'assigner un filtre  pour une dimension ou un metric.</p>
+
+<p class="important"><strong>Note: </strong> Les opérateurs ne sont pas identiques pour filtrer une dimension ou un metric, <a href="http://code.google.com/intl/fr-FR/apis/analytics/docs/gdata/gdataReferenceDataFeed.html#filters">voir la documentation de référence</a></p>
+
+<p>1. Exemple d'exclusion des données relative à Google pour la dimension <b>'source'</b>:</p>
+
+<code>
+$this->ga_api->filter('bounces', '>', '200');
+<br />
+<br />
+// produit: ga:bounces%3E200 
+</code>
+
+<h2>$this->ga_api->and_filter()</h2>
+
+<p>Identique à la fonction <dfn>$this->ga_api->filter()</dfn>, permet d'additionner des filtres supplémentaires</p>
+
+<code>
+$this->ga_api->and_filter('source', '!=', 'google');
+<br />
+<br />
+// produit: ;&filters=ga:source%21%3Dgoogle
+</code>
+
+
+<h2>$this->ga_api->or_filter()</h2>
+
+<p>Identique à la fonction <dfn>$this->ga_api->filter()</dfn>, permet de choisir des filtres supplémentaires</p>
+
+<code>
+$this->ga_api->or_filter('medium', '==', 'organic');
+<br />
+<br />
+// produit: ,ga:medium%3D%3Dreferral
+</code>
+
+<br />
+<p>Il est possible de chainer ces fonctions (vous n'êtes pas limité par le nombre de and et de or):</p>
+<pre>
+$this->ga_api->filter('bounces', '>', '200')
+	     ->and_filter('source', '!=', 'google')
+	     ->and_filter('source', '!=', 'yahoo')
+	     ->or_filter('medium', '==', 'organic');
+
+// produit: &filters=ga:bounces%3E200;ga:source%21%3Dgoogle;ga:source%21%3Dyahoo,ga:medium%3D%3Dorganic
+</pre>
+
+
+<h2>$this->ga_api->segment(int)</h2>
+
+<p>Spécifier un segment prédéfini. Par défaut, chaque compte possède une suite de segments allant de -1 à -12. A partir de l'interface web de Google Analytics, il est possible d'appliquer des segments personnalisés. L'utilisation des segments avec cette librairie et très pratique dans la mesure ou il est possible de modifier le comportement des segments sans modifier le code de votre application. Voir <a href="http://code.google.com/intl/fr-FR/apis/analytics/docs/gdata/gdataReferenceDataFeed.html#segment">la documentation de référence</a></p>
+
+<p>Combinaison d'un <b>segment</b> avec une <b>dimension</b> et un <b>metric</b>:</p>
+
+<code>
+$this->ga_api->segment(-12)->dimension('source')->metric('visits, pageviews');
+<br />
+<br />
+// produit:&dimensions=ga:source&metrics=ga:visits,ga:pageviews&segment=gaid::-12
+</code>
+
+<h2>$this->ga_api->dsegment()</h2>
+
+<p>Permet de créer des segments "à la volée" au lieu d'utiliser des segments prédéfinis. Fonctionnant sur le même principe que les filtre, une vidéo de présentation des segments dynamiques est proposée sur <a href="http://code.google.com/intl/fr-FR/apis/analytics/docs/gdata/gdataReferenceDataFeed.html#segment">la documentation de référence</a></p></p>
+
+<code>
+$this->ga_api->dsegment('medium', '==', 'referral');
+<br />
+<br />
+// produit: &segment=dynamic::ga:medium%3D%3Dreferral
+</code>
+
+
+<h2>$this->ga_api->and_dsegment()</h2>
+
+<p>Fonctionne sur le même principe que pour les filtre, avec la même syntaxe.</p>
+
+<code>
+$this->ga_api->dsegment('source', '==', 'google')->and_dsegment('country', '!=', 'France');
+<br />
+<br />
+// produit: &segment=dynamic::ga:source%3D%3Dgoogle;ga:country%21%3DFrance
+</code>
+
+<h2>$this->ga_api->or_dsegment()</h2>
+
+<p>Fonctionne sur le même principe que pour les filtre, avec la même syntaxe.</p>
+
+<code>
+$this->ga_api->dsegment('source', '==', 'bing')->or_dsegment('source', '==', 'yahoo');
+<br />
+<br />
+// produit: &segment=dynamic::ga:source%3D%3Dbing,ga:source%3D%3Dyahoo
+</code>
+
+<h2>$this->ga_api->sort_by()</h2>
+
+<p>Controle l'ordre d'apparition des données. Si cette fonction n'est pas utilisé, les résultats sont triés en <b>ordre descendant des valeurs metrics</b>. Si un second paramètre est passé, la fonction tri en ordre ascendant</p>
+
+<p>1. Exemple de tri en ordre descendant</p>
+
+<code>
+$this->ga_api->sort_by('source');
+<br />
+<br />
+// produit: &sort=ga:source
+</code>
+
+<p>1. Exemple de tri en ordre ascendant</p>
+
+<code>
+$this->ga_api->sort_by('source', true);
+<br />
+<br />
+// produit: &sort=-ga:source
+</code>
+
+<h2>$this->ga_api->limit()</h2>
+
+<p>Limite le nombre de résultats à récupérer. Si cette fonction n'est pas utilisée dans votre requête, la limite est automatiquement définie à <b>100 résultats</b>.</p>
+
+<p class="important"><strong>Note: </strong> A l'heure actuelle, google limit le nombre à 1000 résultats simultanés par requêtes</p>
+
+<code>
+$this->ga_api->limit(25);
+<br />
+<br />
+// produit: &max-results=25
+</code>
+
+<h2>$this->ga_api->offset()</h2>
+
+<p>Définir le début de l'index des résultats. Associé à limite, cette fonction est utile pour la pagination. Si la fonction n'est pas utilisée, <b>la valeur par défaut est 1.</b></p>
+
+<p class="important"><strong>Note: </strong> Les index ne débutent pas à 0, mais 1. pensez à en tenir compte si vous utiliser la pagination dans CodeIgniter</p>
+
+
+<code>
+$this->ga_api->offset(10);
+<br />
+<br />
+// produit: &start_index=10
+</code>
+<br />
+<br />
+
+<h1>Fonctions de production de requêtes</h1>
+
+<p>les fonctions suivantes acceptent toutes comme paramètre un chemin vers un fichier XML valide. Dans ce cas, vous pouvez directement convertir le fichier XML sans passer par les autres fonctions:</p>
+
+<pre>
+$file = '/home/www/files/report.xml';
+
+$this->ga_api->get_object($file);
+</pre>
+
+<h2>$this->ga_api->get()</h2>
+
+<p>Retourne les données XML brutes.</p>
+
+<h2>$this->ga_api->get_array()</h2>
+
+<p>Retourne les données sous forme d'array associatifs</p>
+
+<p>Exemple pour récupérer les 2 pays qui génèrent le plus de visites sur le mois passé:</p>
+<pre>
+$this->ga_api->dimension('country')
+		->metric('visits, pageviews')
+		->filter('country', '!=', '(not set)')
+		->limit(2);
+
+$array = $this->ga_api->get_array();
+
+// array retourne:
+
+[France] => Array
+    (
+        [visits] => 15757
+        [pageviews] => 51728
+    )
+
+[United States] => Array
+    (
+        [visits] => 917
+        [pageviews] => 1819
+    )
+</pre>
+
+<h2>$this->ga_api->get_object()</h2>
+
+<p>Retourne les données sous forme d'objets<br />Exemple pour récupérer les 2 pays qui génèrent le plus de visites sur le mois passé:</p>
+
+<pre>
+$this->ga_api->dimension('country')
+		->metric('visits, pageviews')
+		->filter('country', '!=', '(not set)')
+		->limit(2);
+
+$object = $this->ga_api->get_object();
+
+// object retourné:
+    
+[France] => stdClass Object
+    (
+        [visits] => 15757
+        [pageviews] => 51728
+    )
+
+[United States] => stdClass Object
+    (
+        [visits] => 917
+        [pageviews] => 1819
+    )
+</pre>
+
+<h2>Afficher le résumé des requêtes</h2>
+
+<p>Si le paramètre <dfn>summary</dfn> est défini comme TRUE, chaque requête possèdera un Array ou Objet (en fonction des  methodes ci-dessus) supplémentaire accessible en dehors des boucles.</p>
+
+<p>L'index d'accès est nomé 'summary'. Si par exemple vous faite la même requête <var>$this->ga_api->get_object()</var> ci-dessus:</p> 
+<pre>
+
+// object retourné:
+
+[summary] => stdClass Object
+   (
+       [startDate] => 2010-05-29
+       [endDate] => 2010-06-28
+       [totalResults] => 117
+       [startIndex] => 1
+       [itemsPerPage] => 2
+       [metrics] => stdClass Object
+           (
+               [visits] => 23146
+               [pageviews] => 70949
+           )
+    )
+
+[France] => stdClass Object
+    (
+        [visits] => 15757
+        [pageviews] => 51728
+    )
+
+[United States] => stdClass Object
+    (
+        [visits] => 917
+        [pageviews] => 1819
+    )
+</pre>
+
+
+</body>
+</html>
