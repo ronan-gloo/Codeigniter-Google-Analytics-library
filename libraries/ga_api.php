@@ -547,6 +547,7 @@ class GA_Api {
 	 */
 	function _array_to_object($array) 
 	{
+		$object = new stdClass();
 		foreach ($array as $key => $value) 
 		{
 			$object->$key = is_array($value) ? $this->_array_to_object($value) : $value;
@@ -736,6 +737,10 @@ class GA_Api {
 				fwrite($file, $this->data_file);
 			}
 			return true;
+		}
+		else 
+		{
+			mkdir($this->cache_folder, 0755, TRUE);
 		}
 		return false;
 	}
